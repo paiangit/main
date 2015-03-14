@@ -8,9 +8,9 @@
 
 ##目录
 
-1. [Git的使用简介](#git 'Git的使用简介')<br>
+1. [Git的使用简介](#git 'Git的使用简介')
 
-2. [MarkDown语法简介](#markdown 'MarkDown语法简介')<br>
+2. [MarkDown语法简介](#markdown 'MarkDown语法简介')
 
 3. [CSS之重置样式](#css-reset 'CSS之重置样式')
 
@@ -33,11 +33,59 @@
 12. [JavaScript之node.js](#js-node 'JavaScript之node.js')
 
 13. [前端性能优化技巧总结](#optimizztion '前端性能优化技巧总结')
-
+<br>
 
 ### name='git' Git的使用简介
 
-### MarkDown语法简介
+mkdir paiangit           //创建一个目录paiangit
+
+git init                 //初始化一个项目
+
+git config user.name paiangit    //设置访问该目录的账户名
+
+git config user.email xxx@xx.xx  //设置访问该目录的账户邮箱
+
+pwd                      //显示当前目录的完整路径
+
+rm -rf xxx               //删除某某文件或文件夹
+mkdir ylb-sell-6                     //创建目录 ylb-sell-6
+
+ls                                       //查看当前目录下文件
+
+cd alb-sell-6                        // 切换到目录ylb-sell-6
+
+cd ..                                   // 返回到当前目录的上一级目录
+
+clear                                   //  清屏
+
+git status                             // 查看有变化的文件(一般有变化的文件会以红色显示出来)
+
+git clone git@gitlab.alibaba-inc.com:de/ylb-sell-6.git
+
+git checkout -b daily/1.x.x      //在现在分支上创建一个新分支
+
+git checkout daily/1.x.x         //切换到这个分支
+
+git add -A                       //stages all
+
+git commit -m '提交的备注信息'     //先add 再提交修改
+
+git push origin daily/1.x.x      //把内容推送到日常环境
+
+git tag publish/1.x.x            //打个tag
+
+git push origin publish/1.x.x    //把这个tag的版本发布到正式线上
+
+git pull origin daily/1.x.x      //拉取最新代码
+
+git rm --cached -r right.css.map  //移除文件right.css.map的缓存
+
+git diff                          // 查看修改的详细内容
+
+git diff  cached                  //
+<br>
+
+### name='markdown' MarkDown语法简介
 
 ### CSS之重置样式
 
