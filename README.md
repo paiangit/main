@@ -43,7 +43,7 @@
 
 12. [JavaScript之node.js](#js-node 'JavaScript之node.js')
 
-13. [前端性能优化技巧总结](#optimizztion '前端性能优化技巧总结')
+13. [前端性能优化技巧总结](#optimization '前端性能优化技巧总结')
 <br>
 
 <a name='git'></a>
@@ -97,26 +97,38 @@ git diff                          //查看修改的详细内容
 
 git diff  cached                  //
 
-#### name='markdown' MarkDown语法简介
+<a name='markdown'></a>
+#### MarkDown语法简介
 
+<a name='css-reset'></a>
 #### CSS之重置样式
 
+<a name='css-compatibility'></a>
 #### CSS之常见兼容性问题总结
 
+<a name='css-layout'></a>
 #### CSS之高级布局
 
+<a name='css-animation'></a>
 #### CSS3之动画实现
 
+<a name='js-base'></a>
 #### JavaScript之基础知识理解
 
+<a name='js-segment'></a>
 #### JavaScript之常用JavaScript代码段
 
+<a name='js-workflow'></a>
 #### JavaScript之自动化工作流
 
+<a name='js-angular'></a>
 #### JavaScript之AngularJS
 
+<a name='js-jade'></a>
 #### JavaScript之Jade模版
 
+<a name='js-node'></a>
 #### JavaScript之node.js
 
+<a name='optimization'></a>
 #### 前端性能优化技巧总结
