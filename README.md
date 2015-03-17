@@ -98,17 +98,16 @@ git push origin daily/1.0.0                      #push到远程
 
 输入完这上一行命令后，会提示你输入用户名和密码，按要求输入即可。密码在输入时什么提示也没有，你可能感觉没有输入成功。这时你不用担心，只要认真输入完成，回车即可。如果输入是正确的，就可以完成push到远程的操作了。
 
+（下面这段有问题，现在还未实现。
 但是，多提交几次你就会发现，每次都要你输入用户名和密码，是不是很麻烦啊？下面告诉你一个简单的方法，用SSH公钥来进行认证。
 打开控制台，在默认的目录下（一般是C:\Documents and Settings\Administrator\）输入dir命令，查看该目录下有哪些文件夹和文件。在其中找一找有没有.ssh这个文件夹。如果没有，则切换到C:\Documents and Settings\Administrator\或者D:\Documents and Settings\Administrator\中找一找有没有该文件夹。找到该文件夹后，用cd .ssh切换到该文件夹下。
 然后输入如下命令进行公钥和秘钥的生成。
 ssh-keygen -C 你的email地址  -t rsa
 然后会提示你输入保存秘钥的地址，你直接输入id_rsa即可将公钥保存到.ssh目录下的id_rsa.pub文件中，而秘钥则在相同目录下的id_rsa中。
-
 然后用cat id_rsa.pub命令将该公钥文件的内容打印到控制台中，复制其中不包含email地址的部分。
 在github网站上登录进去，单击右上角的小齿轮进入到settings菜单，选中左侧的SSH Keys菜单项，单击右上方Add SSH Key按钮，把刚才复制好的SSH公钥粘贴进去。
 title可以随便取。
-
-然后重启一下控制台。这样，下次进行push时就不用再输入用户名密码了。
+然后重启一下控制台。这样，下次进行push时就不用再输入用户名密码了。）
 
 
 ##### Mac系统中Git的使用
