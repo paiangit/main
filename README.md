@@ -62,7 +62,7 @@ git clone https://github.com/paiangit/main.git
 
 >'git' 不是内部或外部命令，也不是可运行的程序或批处理文件。
 
-这时我们首先得检查是否安装了git，如果没有，则得先去http://git-scm.com/download/win中下载windows版的git并安装它。我这里选择安装在D:\Program Files目录下。
+这时我们首先得检查是否安装了git，如果没有，则得先去 http://git-scm.com/download/win 中下载windows版的git并安装它。我这里选择安装在D:\Program Files目录下。
 
 其次，需要查看一下系统中的环境变量是否对git的路径进行过添加。具体的添加做法是，在“我的电脑”图标上单击右键——选择“属性”——选中“高级”选项卡——单击其中的“环境变量”按钮——在下侧的系统变量中找到Path变量，双击它——把下列路径添加到该变量的最后。
 
@@ -100,53 +100,53 @@ git push origin daily/1.0.0                      #push到远程
 
 ##### Mac系统中Git的使用
 
-命令                              意义
+常用命令及其意义如下：
 
-mkdir paiangit                   //创建一个目录paiangit
+mkdir paiangit                   #创建一个目录paiangit
 
-git init                         //初始化一个项目
+git init                         #初始化一个项目
 
-git config user.name paiangit    //设置访问该目录的账户名
+git config user.name paiangit    #设置访问该目录的账户名
 
-git config user.email xxx@xx.xx  //设置访问该目录的账户邮箱
+git config user.email xxx@xx.xx  #设置访问该目录的账户邮箱
 
-pwd                              //显示当前目录的完整路径
+pwd                              #显示当前目录的完整路径
 
-rm -rf xxx                       //删除某某文件或文件夹
+rm -rf xxx                       #删除某某文件或文件夹
 
-mkdir paiangit                 //创建目录 paiangit
+mkdir paiangit                 #创建目录 paiangit
 
-ls                               //查看当前目录下文件
+ls                               #查看当前目录下文件
 
-cd paiangit                    //切换到目录paiangit
+cd paiangit                    #切换到目录paiangit
 
-cd ..                            //返回到当前目录的上一级目录
+cd ..                            #返回到当前目录的上一级目录
 
-clear                            //清屏
+clear                            #清屏
 
-git status                       //查看有变化的文件(一般有变化的文件会以红色显示出来)
+git status                       #查看有变化的文件(一般有变化的文件会以红色显示出来)
 
-git clone https://github.com/paiangit/main.git   //拷贝一个项目到本地
+git clone https://github.com/paiangit/main.git   #拷贝一个项目到本地
 
-git checkout -b daily/1.x.x      //在现在分支上创建一个新分支
+git checkout -b daily/1.x.x      #在现在分支上创建一个新分支
 
-git checkout daily/1.x.x         //切换到这个分支
+git checkout daily/1.x.x         #切换到这个分支
 
-git add -A                       //stages all
+git add -A                       #stages all
 
-git commit -m '提交的备注信息'     //先add 再提交修改
+git commit -m '提交的备注信息'     #先add 再提交修改
 
-git push origin daily/1.x.x      //把内容推送到日常环境
+git push origin daily/1.x.x      #把内容推送到日常环境
 
-git tag publish/1.x.x            //打个tag
+git tag publish/1.x.x            #打个tag
 
-git push origin publish/1.x.x    //把这个tag的版本发布到正式线上
+git push origin publish/1.x.x    #把这个tag的版本发布到正式线上
 
-git pull origin daily/1.x.x      //拉取最新代码
+git pull origin daily/1.x.x      #拉取最新代码
 
-git rm --cached -r right.css.map  //移除文件right.css.map的缓存
+git rm --cached -r right.css.map  #移除文件right.css.map的缓存
 
-git diff                          //查看修改的详细内容
+git diff                          #查看修改的详细内容
 
 git diff  cached
 
