@@ -108,7 +108,7 @@ ssh-keygen -C 你的email地址  -t rsa
 在github网站上登录进去，单击右上角的小齿轮进入到settings菜单，选中左侧的SSH Keys菜单项，单击右上方Add SSH Key按钮，把刚才复制好的SSH公钥粘贴进去。
 title可以随便取。
 
-这样，下次进行push时就不用再输入用户名密码了。
+然后重启一下控制台。这样，下次进行push时就不用再输入用户名密码了。
 
 ##### Mac系统中Git的使用
 
