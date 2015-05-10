@@ -40,26 +40,30 @@
 
 7. [CSS3之动画实现](#css-animation 'CSS3之动画实现')
 
-8. [JavaScript之基础知识理解](#js-base 'JavaScript之基础知识理解')
+8. [CSS之LESS](#css-less 'CSS之LESS')
 
-9. [JavaScript之常用JavaScript代码段](#js-segment 'JavaScript之常用JavaScript代码段')
+9. [JavaScript之基础知识理解](#js-base 'JavaScript之基础知识理解')
 
-10. [JavaScript之自动化工作流](#js-workflow 'JavaScript之自动化工作流')
+10. [JavaScript之常用JavaScript代码段](#js-segment 'JavaScript之常用JavaScript代码段')
 
-11. [JavaScript之AngularJS](#js-angular 'JavaScript之AngularJS')
+11. [JavaScript之自动化工作流](#js-workflow 'JavaScript之自动化工作流')
 
-12. [JavaScript之Jade模版](#js-jade 'JavaScript之Jade模版')
+12. [JavaScript之AngularJS](#js-angular 'JavaScript之AngularJS')
 
-13. [JavaScript之node.js](#js-node 'JavaScript之node.js')
+13. [JavaScript之Jade模版](#js-jade 'JavaScript之Jade模版')
 
-14. [JavaScript之Canvas](#canvas 'JavaScript之Canvas')
+14. [JavaScript之node.js](#js-node 'JavaScript之node.js')
 
-15. [前端优化技巧总结](#optimization '前端性能优化技巧总结')
+15. [JavaScript之Canvas](#canvas 'JavaScript之Canvas')
 
-16. [前端工具的使用] (#tool '前端工具的使用')
+16. [前端优化技巧总结](#optimization '前端性能优化技巧总结')
 
-17. [前端杂物间] (#others '前端杂物间')
+17. [前端工具的使用] (#tool '前端工具的使用')
+
+18. [前端杂物间] (#others '前端杂物间')
 <br>
+
+---
 
 <a name='normal-error'></a>
 #### 那些我们常犯的基本错误
@@ -69,6 +73,8 @@
 在日常工作中，读错一个单词也许算不得什么。但是，如果你去一个几百人、几千人甚至更大的场合做一个分享，而其中出现英文单词发音错误的问题，会降低你所做分享的专业性和信服力。下面我总结了一些曾犯过的基本发音错误：
 
 浏览器safari曾被我多年自以为是地误读为[ˈsæfəri]，而很多人也跟我一样读。直到有一次听人讲课，发现它的发音和我不一样。我半信半疑地查了下字典，才发现我是错的。正确发音应该为：英音 [səˈfɑ:ri]  美音 [səˈfɑri]
+
+---
 
 <a name='git'></a>
 #### Git的使用简介
@@ -205,6 +211,7 @@ command +option +j   打开console
 
     git push origin HEAD —force      #这样就可以强制修改远程服务器上已经提交的commit
 
+##### 多人合作开发
 
 	发布之后如果再有修改，需要新拉出来一个分支，并把版本号往上升1，修改完之后再commit,push,tag,push：
 
@@ -217,7 +224,27 @@ command +option +j   打开console
     git push origin publish/1.x.x    #把这个tag的版本发布到正式线上
     git pull origin daily/1.x.x      #拉取最新代码
 
-    多人合作开发时，publish之前，需要先add，再commit，再pull，然后才可以publish。
+    如果过去发布的某个版本上的代码出现了bug，但是在其之上，又已开发了很多新的代码，如何修复它？这就需要创建出来一个新分支，在该分支上修复完bug后再merge回当前正在开发的分支上。因为如果直接在当前开发中的版本上修复bug的话，将无法直接发布，因为其中已包含许多正在开发中还不能对外发布的代码，所以需要从已发部的那个版本上创建出来一个新分支，然后在这个分支上修复bug，并合并到当前开发中的分支上。
+
+     在github上的操作如下：点击mater分支——出现下拉列表——点击manage，就会进入分支管理面板，点击+号——输入分支名，然后发现新建的这个分支即变成了current branch，然后在该分支进行修改和commit及发布。
+
+     最后，同样进入分支管理面板，把master分支拖到左下角右侧的格子中，把bug修复分支拖到左下角左侧的格子中。然后点击merge按钮。
+
+     另一个merge的方法是，当commit之后，在github客户端的当前项目名称上单击右键，选择view on github，然后提示说有一次commit未合并，看要不要合并，并看到一个compare and pull request按钮，点击它。按提示合并它。这方法比较适合开源项目，因为可随时看到别人的commit并决定是否合并。
+
+     多人合作开发时，publish之前，需要先add，再commit，再pull，然后才可以publish。
+
+##### git如何回到过去的某个提交，并带着过去的代码回到未来
+
+      git reset --hard commitid      #回到过去
+
+      git reflog                     #打印出之前已有的版本号
+
+      git reset --hard commitid      #带着过去的代码回到未来
+
+##### 如何创建里程碑，即创建一个release
+
+      github中：release菜单项——new a draft release按钮——填入release tag极其说明，然后发布即可。
 
 ##### git使用了错误的邮箱push过，如何恢复它？
 
@@ -285,6 +312,17 @@ npm-debug.log
 
 	然后再push一遍，就彻底把该不该被提交却提交了的文件移除掉了。
 
+##### 版本管理的一些经验：
+
+（1）提交之前diff和测试好自己的代码。
+
+（2）下班之前清理好自己的工作区，完成好提交。一来有助于把代码备份到远程，防止灾难事故等引起代码丢失，二来可以避免第二天上班时忘记哪些代码有用，哪些没用了。
+
+（3）发现冲突不要随意删除他人的代码。
+
+（4）完成一个阶段的开发和调试后及时建立里程碑。以便于后续从其中拉取分支来修改bug。
+
+---
 
 <a name='markdown'></a>
 #### MarkDown语法简介
@@ -372,6 +410,7 @@ _   底线
 
 !   惊叹号
 
+---
 
 <a name='css-reset'></a>
 #### CSS之重置样式
@@ -379,6 +418,8 @@ _   底线
 windows的IE8下图片出现蓝色边框，可能是初始化样式中未设置img{border:none;}所导致的。
 
 在有的浏览器下，a标签hover状态时，虽然对a本身已经设置过a{text-decoration:none;}其文字会出现下划线，主要原因可能是初始化样式中未设置a:hover{text-decoration:none;} ，即对hover状态也要进行去除下划线的初始化。
+
+---
 
 <a name='css-compatibility'></a>
 #### CSS之常见兼容性问题总结
@@ -520,6 +561,8 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 
 所以，如果你的网站只需要兼容webkit、firefox、opera等浏览器，建议对于伪元素采用双冒号的写法，因为它是最新标准。但如果不得不兼容IE浏览器，还是用CSS2的单冒号写法比较安全。
 
+---
+
 <a name='css-layout'></a>
 #### CSS之高级布局
 
@@ -533,12 +576,49 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 
 详细可参见：http://www.zhangxinxu.com/wordpress/2010/01/css3-border-image%E8%AF%A6%E8%A7%A3%E3%80%81%E5%BA%94%E7%94%A8%E5%8F%8Ajquery%E6%8F%92%E4%BB%B6/
 
+---
 
 <a name='css-animation'></a>
 #### CSS3之动画实现
 
+---
+
+<a name='css-less'></a>
+#### CSS3之LESS
+
+less的使用：
+
+&_item写法
+
+font: 12px/18px ....代替font-size,line-height,font-weight等的写法。
+
+给父元素加个负的margin-right来消除子元素右边距超出父元素宽度的影响。
+
+ie6中，初始化时需要设置img{boder:none},消除默认的边框
+
+给float元素加上display:inline可以清除双边距。
+
+要让导入的css文件编译进当前文件中，需要写@import (less) 'a.css'，而不是写@import 'a.css'，后者只是作为外部文件引入，而不会编译进当前文件。
+
+---
+
 <a name='js-base'></a>
 #### JavaScript之基础知识理解
+
+**offsetWidth,offsetHeight的值包含了content,padding,border的值，而不仅仅是content的值。**
+
+这是非常容易出错的地方。要获得content的宽高值，需要用.style.width或style.height来获取。
+
+**函数声明和变量声明会被提前，而函数表达式中的函数不会。**
+
+例如，
+
+	var add = function(a,b){
+
+	}
+中的var add会前置，而其中的function不会前置。
+
+若去掉var add=,则这个function就成了一个函数声明，故而而也会被前置。
 
 那些踩过的坑：
 
@@ -572,6 +652,8 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 	)
 JSON.parse语句在Mac系统的firefox 37.0.2版本中报错说data格式不对，最后发现是因为该data 的末尾被迅雷的插件附加了一个div元素的 html，导致它已不再是json格式，从而JSON.parse(data)时解析出错。最后把这个插件删除了，重启一下该浏览器，就好了。
 
+---
+
 <a name='js-segment'></a>
 #### JavaScript之常用JavaScript代码段
 
@@ -582,6 +664,7 @@ JSON.parse语句在Mac系统的firefox 37.0.2版本中报错说data格式不对�
 	history.back(-1); //直接返回当前页的上一页，数据全部被清空，是个新页面
 	history.go(-1);   //也是返回当前页的上一页，不过表单里的数据全部还在
 
+---
 
 <a name='js-workflow'></a>
 #### JavaScript之自动化工作流
@@ -978,12 +1061,101 @@ concurrent:server用来通过concurrent这个任务来指定server这一target�
 
 把sass安装上。
 
+---
 
 <a name='js-angular'></a>
 #### JavaScript之AngularJS
 
+---
+
 <a name='js-jade'></a>
 #### JavaScript之Jade模版
+
+	npm install jade -g
+	jade -P index.html      #编译jade文件
+	jade -P -w index.html      #当文件变化时实时编译jade文件
+
+class用.，id用#，文本内容以空格分开，属性放在括号内，以等号连接属性名和属性值，属性之间以逗号隔开，例如：a#gotop.gotop(href='#',target='blank') back to top
+
+如果文本内容很长，不想编译出来的内容都被压缩到一行上，可以在该文本内容之前加.然后把文本内容该分行的地方进行分行书写，以方便阅读。
+例如:
+
+	p.
+	    1. aaa
+	    2. bbb
+
+或者在文本的每一行加上竖线和空格。例如
+
+	p
+	     | 1. aaa
+	     | 2. bbb
+
+##### jade中的条件语句：
+
+（1）
+
+	if
+	elseif
+	else
+
+（2）
+
+	unless
+
+（3）
+	case  变量名:
+	when  '值':
+	       p 这是第一语句
+	when  '值':
+	       p 这是第二语句
+	when  '值':
+	       p 这是第三语句
+	default
+	       p 这是默认语句
+
+##### mixin的使用
+
+先定义它：
+
+	mixin mixin的名字
+	        p  '这一行是mixin的内容'
+
+再使用它：
+
+	+mixin的名字
+
+例子:
+
+	mixin lesson
+	        p  '这是个例子'
+	+lesson
+
+	mixin study(name,courses)
+	       p  #{name} study
+	       ul.courses
+	       each course in courses
+	                li = course
+	+study('tom',['jade','java'])
+
+	mixin group(student)
+	     h4  #{student.name}
+	     +study(student.name,student.courses)
+	+group({name:'tom',courses:['jade','java']})
+
+	mixin team(slogan)
+	      h4 #{slogan}
+	      if(block)
+	            block
+	      else
+	            no team
+	+team('slogan')
+	      p good job!
+
+##### 模板的引入
+
+	include style    //把style.jade引入
+
+---
 
 <a name='js-node'></a>
 #### JavaScript之node.js
@@ -1094,6 +1266,7 @@ mac系统下的node.js安装：
 		timeout:3000
 	});
 
+---
 
 <a name='canvas'></a>
 #### JavaScript之Canvas
@@ -1240,6 +1413,7 @@ main.js
 		ctx.drawImage(starPic, 300, 400);
 	}
 
+---
 
 <a name='optimization'></a>
 #### 前端优化技巧总结
@@ -1292,6 +1466,7 @@ undefined
 
 	var win = opt_win || window;
 
+---
 
 <a name='tool'></a>
 #### 前端工具的使用
@@ -1301,8 +1476,6 @@ undefined
 在你进行调试的时候，可能需要把本地的某个javascript或css文件替换掉线上的某个页面中对应的javascript或css文件，进行在线调试。这时你就需要一个抓包替换工具。比如Windows系统下的fiddler。这里我讲一下Mac系统下的一个与fiddler类似的工具——Charles。
 
 首先打开Charles工具，切换到sequence，刷新你要抓包的页面，可以抓到所有的请求。然后你找到你需要的替换的某个javascript或css文件，选中它右键单击，选择map url，然后选择本地的文件。然后点Charles中的刷新按钮，即可把该请求指向本地的资源。这样可以方便地进行调试。
-
-<a name='component'></a>
 
 ##### host绑定的处理
 
@@ -1354,6 +1527,9 @@ TMS是一个PHP模板编辑工具，其中中遇到的坑如下：
 
 然后要安装libpng
 
+---
+
+<a name='component'></a>'
 
 #### 前端插件或组件的开发
 
@@ -1396,6 +1572,53 @@ window是DOM对象模型的最顶层对象。ECMA Script在执行function(){}内
 其次，为什么外面传入的只有window这一个参数，而里面却有两参数呢（多了个undefined）？
  一方面，undefined在JavaScript中并不属于保留字/关键字，因此在ie5.5-ie8中我们可以将其当作变量那样对其赋值（IE9+及其他现代浏览器中赋值给undefined将无效），也就是说undefined 在ie5.5-ie8等浏览器中是可以作为变量名而赋予其它值的。这样，它就有可能被人修改成其它的值。所以需要将undefined的值在我们的程序范围内重置回undefined，以保证不受到外界的影响。如何重置呢？实参不传入内容，而形式参数是undefined的情况下，因为实参未定义，所以形式参数undefined获得的值就是undefined。
 另一方面是因为在一些老浏览器中直接使用undefined会报错，考虑到兼容性，因此使用未定义实参的方式来生成一个undefined值传给内部的形式参数undefined。这样，在其内部再使用undefined的时候，就不会报错了。此外要注意，不要把window.undefined作为实参传递给形参，因为window.undefined可能被其他人修改了。所以最好的方式就是什么都不传，那样形参的undefined就会因实参未定义而成为真正的undefined了。
+
+
+##### 组件开发
+
+给css加前缀形成命名空间。避免组件的css命名冲突。有的人采用前面都加个父类选择器的方式来避免命名冲突，这实际上是把css和html结构耦合在了一起，同时也会导致嵌套很多，是不可取的方式。
+
+js通过匿名函数隔开公有和私有空间。然后通过window.tabView=tabView;的方式把组件对象挂到window这个全局对象上，从而完成其对外的暴露。
+
+模块化：
+模块名就是js文件名（不含后缀）。
+模块文件的写法如下：
+define(['所依赖的模块名'],function(m1){
+      return{
+            a:3,
+            b:5
+      }
+})
+
+原生弹窗的问题：1、阻塞进程，2、不同浏览器样式不同，3、不可自定义样式。
+
+如果require中未未指明模块对应的文件名，则默认依赖的模块名即是文件名。如果要指定，可以通过配置paths，如下所示：
+
+require.config({
+         paths:{
+                 jquery:'jquery-1.11.0.min'
+         }
+})
+
+在构造函数中添加this.config={}进行配置。然后用构造函数.prototype={
+     函数名:function(cfg){
+             var CFG=$.extend(this.cfg,cfg);//进行配置项合并，把cfg参数中的配置合并进构造函数中的配置项中，如果与构造函数中的配置项同名的话则会覆盖掉构造函数中的配置项。
+     }
+}
+
+皮肤的定制:
+采取在css中写好多套皮肤，在js中传入控制皮肤的classname来进行定制。可以很好地处理在同一页面中该组件使用了多次，且使用了多个皮肤的问题。
+
+定制按钮文案：
+
+在配置项中设置text4button的默认值，在调用组件时传入该参数修改默认值。
+依赖jQueryUI后，jQuery对象会增加一些方法，如draggable方法。
+
+在配置项中增加dragHandle=null来设置默认拖动的把手为空。然后调用时传入一个元素作为参数进行把手指定。
+在代码内部，判断是否传入了把手参数，如果有传入，则把它写进draggable方法的参数中。如果没有传入，则draggable方法不填参数，默认会拖动整个调draggable方法的对象。
+utility抽象类是和ui无关的，像drag、resize、ajax、动画,wiget抽象类是和ui有关的，像tabview,treeview。
+
+---
 
 <a name='others'></a>
 #### 前端杂物间
