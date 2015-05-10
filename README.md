@@ -357,19 +357,25 @@ npm install 命令后面没有指定安装什么时，会去查找当前所在�
 yeoman的作用——快速搭建现代web app的脚手架。
 
 yeoman的安装：
+
 	sudo npm install -g yo   #注意：苹果系统下要加sudo，Windows下的安装不用。下面的包安装也同样。
+	
 安装后可以执行yo -v查看安装的yeoman版本。
 
 bower的作用——web的包管理器
 
 bower的安装：
+
 	sudo npm install -g bower
+
 安装完之后，执行
+
 	bower -v
 
 grunt的作用——任务运行器，有强大的各种功能器件的支持
 
 grunt的安装：
+
 	sudo npm install -g grunt-cli  #注意别少了-cli
 
 ##### 二、yeoman实践
@@ -377,22 +383,28 @@ grunt的安装：
 yeoman官网的generator列表中，前面有八字胡图标的generator是yeoman官方提供的，而没有这个图标的则是非yeoman官方出品的。
 
 现在我门安装一个generator：
+
 	npm install -g generator-angular
 
 下面我们使用它：
+
 	mkdir yo-in-action
 	cd yo-in-action
 	mkdir angular-in-action
 	cd angular-in-action
+
 因为使用angular generator会在当前文件下生成一个项目，所以我们给该项目先建立好一个文件夹angular-in-action
 ，然后进入到该文件中再去执行生成项目的命令。
 下面我们执行用generator创建项目的命令。
+
 	yo angular learangular
+
 其中angular是生成器的名气，而learnangular是项目的名字，体现在在package.json文件内部的name项中，这并不是文件夹名。文件夹名是刚创建的angular-in-action。
 然后接下来会问你是否需要用sass\bootstrap等，需要的话yes，不需要的话no
 再接下来还会问你是否需要包含一些组件，可以按空格和方向键来依次选择和取消选择。
 
 一些常见的bash命令行：
+
 	pwd     #显示当前所在目录路径
 	ls -al  #打印当前目录下所有文件及文件夹的列表
 	rm -rf  #文件夹／文件名  删除文件／文件夹，-rf这个参数的意思是递归删除，且不需要二次确认。
@@ -401,10 +413,14 @@ yeoman官网的generator列表中，前面有八字胡图标的generator是yeoma
 dependenceis 是该项目发布后，用户在使用该项目时，需要安装的依赖文件。
 devDependencies 是该项目开发过程中或者其它开发协作者在参与该项目的开发时，需要依赖的文件。
 依赖项的内容以键值对的方式存在，例如：
+
 	"grunt" : "^0.4.1"
+
 ^表示主版本号，是对版本的一个宽松的约定。就是说在该主版本号内的版本都是可以的。在我们执行npm install或者npm update的时候，如果发现有该主版本号之内的版本已发布，则会帮我们更新成最新版本。在这里，即只要是0.打头的grunt版本都是可以更新的，比如0.9.0，而如果出现了1.打头的版本，如1.0.0，则不会更新。
 同样，还有
+
 	"grunt" : "~0.4.1"
+
 这里~的意思是，只对0.4.打头的版本进行更新，如0.4.2，而如果出现了0.5.0这样的版本，是不会更新的。
 
 	"engines" : {
@@ -415,43 +431,55 @@ devDependencies 是该项目开发过程中或者其它开发协作者在参与�
 	"scripts" : {
 		"test" : "grunt test"
 	}
+
 这里指定的是在npm命令行中输入的命令与实际命令的对应关系。例如，这里是说当我们在控制台输入npm test的时候，实际执行npm grunt test。
 
 ##### 三、bower实践
 
-mkdir bower-in-action
-cd bower-in-action
-mkdir jquery-bootstrap-in-action
-cd jquery-bootstrap-in-action
+	mkdir bower-in-action
+	cd bower-in-action
+	mkdir jquery-bootstrap-in-action
+	cd jquery-bootstrap-in-action
 
-bower install jquery
-把jquery装上其最新稳定版本
-bower install bootstrap
+	bower install jquery   #把jquery装上其最新稳定版本
+	bower install bootstrap
 
 http://bower.io/search 这个地址支持对所有的官网可获得的bower包的搜索。在其中输入jquery owner:jquery，可以搜索出所有jquery团队开发的包含jquery关键字的包。如果只输入jquery，则所有包含jquery关键字的包都会出现，不管它是不是jquery团队开发的。
 如果你需要安装的是比较小众的包，而这个包在bower的库中没有怎么办呢？bower提供了其它的几种方式可供使用。
 （1）通过github的短写安装，如
+
 	bower install jquery/jquery
+
 前面一个jquery是jquery在github上注册账号的名字，后一个jquery在github上项目的名字
 （2）通过github完整的项目地址，如
+
 	bower install https://github.com/jquery/jquery.git
+
 （3）通过URL进行安装，例如
+
 	npm install http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js
 
 在项目中设置一个bower.json文件之后，执行
+
 	bower install
+
 就会把其中定义的所有以来都安装好。要生成bower.json文件，只需要输入
+
 	bower init
+
 命令即可。
 生成一个.bowerrc文件：
 输入一个
+
 	vim .bowerrc
+
 命令
 然后编辑其内容为：
+
 	{
 	"directory":"bower_coponents",                    //设置安装bower包的目录
-	"proxy":”http://proxy.tencent.com:8080",         //用于配置代理
-	"https-proxy":”https://proxy.tencent.com:8080",  //如果代理用的是https，则用这种方式配置代理
+	"proxy":"http://proxy.tencent.com:8080",         //用于配置代理
+	"https-proxy":"https://proxy.tencent.com:8080",  //如果代理用的是https，则用这种方式配置代理
 	"timeout":60000                                   //如果你的网络环境非常的差，可以设置一下timeout，其默认值是60000，单位时ms，你可以将其改为更长的时间，以便于安装或更新其中的依赖包的时候可以顺利安装。
 	}
 
@@ -482,7 +510,6 @@ http://bower.io/search 这个地址支持对所有的官网可获得的bower包�
 			dist:’dist'
 		};
 
-
 		grunt.initConfig({
 			config : config,  //像config这样的项，由于没有同名插件，对于这种没有通明插件的项，会被作为常量存储起来，在配置文件中以<%= %>这样的方式调用，如下文的<%= config.app %>
 				   watch: {	  //而像watch这样的项，由于存在同名插件grunt-contrib-watch，这个插件在运行的时候，会直接读取Gruntfile.js中的同名项，然后根据其中的配置来运行。当然，要让grunt-contrib-watch插件运行，必须加载它，即grunt.loadNpmTask(‘grunt-npm-watch’)；但是，如果有很多任务需要加载的时候，一个个去加载他们显然有些费劲，因此就有人开发了一个工具，自动将package.json中所定义的依赖作为任务全部加载进来。即上文的require('load-grunt-tasks')(grunt);这一句。load-grunt-tasks就是这个工具的模块名字。
@@ -508,24 +535,28 @@ http://bower.io/search 这个地址支持对所有的官网可获得的bower包�
 
 
 其中的config : config, 除了这种方式，还有一种常用的方式如下 ：
+
 	pkg : grunt.file.readJSON('package.json'),
+
 就是把package.json中的所有配置读取进来，供后面以<%= pkg.***** %>的方式使用。
 
 每一个task中又可以包含自己的options和target
 
 比如，执行sass这一task下的dis这个target，则可以用命令行：
+
 	grunt sass:dist
+
 一个个的task可以组合在一起，组合在一起的组合任务还可以和其它的组合任务组合成更大的组合目录。
 
 两种注册任务的方式：
 
-	grunt.registerTask(‘某组合task的名字’，function(target){
-		grunt.task.run([’任务名’，’任务名’,’任务名’]);
+	grunt.registerTask('某组合task的名字',function(target){
+		grunt.task.run(['任务名'，'任务名','任务名']);
 	})
 
 或者
 
-	grunt.registerTask(‘某组合task的名字’,[
+	grunt.registerTask('某组合task的名字',[
 		'任务名',
 		'任务名',
 		'任务名'
@@ -547,8 +578,11 @@ MIT的宽松度>BSD> ISC> Apache> GPL
 	touch Gruntfile.js
 
 grunt 的文件拷贝依赖于官方的插件 grunt-contrib-copy，用如下命令行安装：
+
 	grunt install grunt-contrib-copy —save-dev
+
 grunt 中文件的删除则依赖于官方的插件 grunt-contrib-clean，用如下命令安装：
+
 	grunt install grunt-contrib-clean —save-dev
 
 
@@ -656,9 +690,13 @@ wiredep这个task是用来根据bower.json的依赖文件来自动引入这些�
 concurrent:server用来通过concurrent这个任务来指定server这一target并行执行。因为grunt中的任务默认是串行执行的。concurrent这个任务是用来让任务并行执行的。其中的server这一target从其源代码查看可知它是用来将sass编译成css，并拷贝到对应的输出目录。
 
 因为webapp-generator生成的项目中使用了 sass，而sass依赖于ruby，所以用
+
 	brew install ruby
+
 命令先把ruby 安装上。然后用
+
 	sudo npm install -g sass
+
 把sass安装上。
 
 
