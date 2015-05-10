@@ -60,13 +60,17 @@
 
 17. [前端工具的使用] (#tool '前端工具的使用')
 
-18. [前端杂物间] (#others '前端杂物间')
+18. [前端插件或组件的开发](#component '前端插件或组件的开发')
+
+19. [前端杂物间] (#others '前端杂物间')
 <br>
+
 
 ---
 
+
 <a name='normal-error'></a>
-#### 那些我们常犯的基本错误
+#### 第一章 那些我们常犯的基本错误
 
 ##### 那些常见的发音错误
 
@@ -74,10 +78,12 @@
 
 浏览器safari曾被我多年自以为是地误读为[ˈsæfəri]，而很多人也跟我一样读。直到有一次听人讲课，发现它的发音和我不一样。我半信半疑地查了下字典，才发现我是错的。正确发音应该为：英音 [səˈfɑ:ri]  美音 [səˈfɑri]
 
+
 ---
 
+
 <a name='git'></a>
-#### Git的使用简介
+#### 第二章 Git的使用简介
 
 ##### Windows系统中Git的使用
 
@@ -322,10 +328,12 @@ npm-debug.log
 
 （4）完成一个阶段的开发和调试后及时建立里程碑。以便于后续从其中拉取分支来修改bug。
 
+
 ---
 
+
 <a name='markdown'></a>
-#### MarkDown语法简介
+#### 第三章 MarkDown语法简介
 
 MarkDown的基本语法如下：
 （1）标题设置
@@ -410,19 +418,23 @@ _   底线
 
 !   惊叹号
 
+
 ---
 
+
 <a name='css-reset'></a>
-#### CSS之重置样式
+#### 第四章 CSS之重置样式
 
 windows的IE8下图片出现蓝色边框，可能是初始化样式中未设置img{border:none;}所导致的。
 
 在有的浏览器下，a标签hover状态时，虽然对a本身已经设置过a{text-decoration:none;}其文字会出现下划线，主要原因可能是初始化样式中未设置a:hover{text-decoration:none;} ，即对hover状态也要进行去除下划线的初始化。
 
+
 ---
 
+
 <a name='css-compatibility'></a>
-#### CSS之常见兼容性问题总结
+#### 第五章 CSS之常见兼容性问题总结
 
 踩到的兼容性问题坑：
 
@@ -561,10 +573,12 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 
 所以，如果你的网站只需要兼容webkit、firefox、opera等浏览器，建议对于伪元素采用双冒号的写法，因为它是最新标准。但如果不得不兼容IE浏览器，还是用CSS2的单冒号写法比较安全。
 
+
 ---
 
+
 <a name='css-layout'></a>
-#### CSS之高级布局
+#### 第六章 CSS之高级布局
 
 ##### border-image的使用
 
@@ -576,15 +590,19 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 
 详细可参见：http://www.zhangxinxu.com/wordpress/2010/01/css3-border-image%E8%AF%A6%E8%A7%A3%E3%80%81%E5%BA%94%E7%94%A8%E5%8F%8Ajquery%E6%8F%92%E4%BB%B6/
 
+
 ---
+
 
 <a name='css-animation'></a>
-#### CSS3之动画实现
+#### 第七章 CSS3之动画实现
+
 
 ---
 
+
 <a name='css-less'></a>
-#### CSS3之LESS
+#### 第八章 CSS3之LESS
 
 less的使用：
 
@@ -600,10 +618,12 @@ ie6中，初始化时需要设置img{boder:none},消除默认的边框
 
 要让导入的css文件编译进当前文件中，需要写@import (less) 'a.css'，而不是写@import 'a.css'，后者只是作为外部文件引入，而不会编译进当前文件。
 
+
 ---
 
+
 <a name='js-base'></a>
-#### JavaScript之基础知识理解
+#### 第九章 JavaScript之基础知识理解
 
 **offsetWidth,offsetHeight的值包含了content,padding,border的值，而不仅仅是content的值。**
 
@@ -652,10 +672,12 @@ ie6中，初始化时需要设置img{boder:none},消除默认的边框
 	)
 JSON.parse语句在Mac系统的firefox 37.0.2版本中报错说data格式不对，最后发现是因为该data 的末尾被迅雷的插件附加了一个div元素的 html，导致它已不再是json格式，从而JSON.parse(data)时解析出错。最后把这个插件删除了，重启一下该浏览器，就好了。
 
+
 ---
 
+
 <a name='js-segment'></a>
-#### JavaScript之常用JavaScript代码段
+#### 第十章 JavaScript之常用JavaScript代码段
 
 ##### history的前进与后退
 
@@ -664,10 +686,12 @@ JSON.parse语句在Mac系统的firefox 37.0.2版本中报错说data格式不对�
 	history.back(-1); //直接返回当前页的上一页，数据全部被清空，是个新页面
 	history.go(-1);   //也是返回当前页的上一页，不过表单里的数据全部还在
 
+
 ---
 
+
 <a name='js-workflow'></a>
-#### JavaScript之自动化工作流
+#### 第十一章 JavaScript之自动化工作流
 
 ##### 如何配置webstorm自动编译less
 
@@ -1061,15 +1085,19 @@ concurrent:server用来通过concurrent这个任务来指定server这一target�
 
 把sass安装上。
 
+
 ---
+
 
 <a name='js-angular'></a>
-#### JavaScript之AngularJS
+#### 第十二章 JavaScript之AngularJS
+
 
 ---
 
+
 <a name='js-jade'></a>
-#### JavaScript之Jade模版
+#### 第十三章 JavaScript之Jade模版
 
 	npm install jade -g
 	jade -P index.html      #编译jade文件
@@ -1155,10 +1183,12 @@ class用.，id用#，文本内容以空格分开，属性放在括号内，以�
 
 	include style    //把style.jade引入
 
+
 ---
 
+
 <a name='js-node'></a>
-#### JavaScript之node.js
+#### 第十四章 JavaScript之node.js
 
 ##### 开启新纪元——进击node.js学习笔记（一）
 
@@ -1266,10 +1296,12 @@ mac系统下的node.js安装：
 		timeout:3000
 	});
 
+
 ---
 
+
 <a name='canvas'></a>
-#### JavaScript之Canvas
+#### 第十五章 JavaScript之Canvas
 
 ##### canvas实现星星闪烁特效
 
@@ -1413,10 +1445,12 @@ main.js
 		ctx.drawImage(starPic, 300, 400);
 	}
 
+
 ---
 
+
 <a name='optimization'></a>
-#### 前端优化技巧总结
+#### 第十六章 前端优化技巧
 
 ##### 条件判断语句的优化
 
@@ -1466,10 +1500,12 @@ undefined
 
 	var win = opt_win || window;
 
+
 ---
 
+
 <a name='tool'></a>
-#### 前端工具的使用
+#### 第十七章 前端工具的使用
 
 ##### 调试神器之Charles抓包工具的使用：
 
@@ -1527,11 +1563,13 @@ TMS是一个PHP模板编辑工具，其中中遇到的坑如下：
 
 然后要安装libpng
 
+
 ---
+
 
 <a name='component'></a>'
 
-#### 前端插件或组件的开发
+#### 第十八章 前端插件或组件的开发
 
 ##### 非插件或组件化的javascript文件写法——;(function(window,undefined){})(window)的理解
 
@@ -1618,10 +1656,12 @@ require.config({
 在代码内部，判断是否传入了把手参数，如果有传入，则把它写进draggable方法的参数中。如果没有传入，则draggable方法不填参数，默认会拖动整个调draggable方法的对象。
 utility抽象类是和ui无关的，像drag、resize、ajax、动画,wiget抽象类是和ui有关的，像tabview,treeview。
 
+
 ---
 
+
 <a name='others'></a>
-#### 前端杂物间
+#### 第十九章 前端杂物间
 
 对页面进行放大时（即显示比例大于100%），同一宽度的线段接口处可能出现水平方向更宽，垂直方向更窄，且略微有错位的情况。按ctrol(或command)+0键恢复成100%的比例即可消失该问题。
 
