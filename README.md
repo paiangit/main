@@ -48,6 +48,8 @@
 12. [JavaScript之node.js](#js-node 'JavaScript之node.js')
 
 13. [前端性能优化技巧总结](#optimization '前端性能优化技巧总结')
+
+14. [前端工具的使用] (#tool '前端工具的使用')
 <br>
 
 <a name='normal-error'></a>
@@ -57,7 +59,7 @@
 
 在日常工作中，读错一个单词也许算不得什么。但是，如果你去一个几百人、几千人甚至更大的场合做一个分享，而其中出现英文单词发音错误的问题，会降低你所做分享的专业性和信服力。下面我总结了一些曾犯过的基本发音错误：
 
-浏览器safari曾被我多年自以为是地误读为[ˈsæfɑ:ri]，而很多人也跟我一样读。直到有一次听人讲课，发现它的发音和我不一样。我半信半疑地查了下字典，才发现我是错的。正确发音应该为：英 [səˈfɑ:ri] 美 [səˈfɑri]
+浏览器safari曾被我多年自以为是地误读为[ˈsæfəri]，而很多人也跟我一样读。直到有一次听人讲课，发现它的发音和我不一样。我半信半疑地查了下字典，才发现我是错的。正确发音应该为：英音 [səˈfɑ:ri]  美音 [səˈfɑri]
 
 
 <a name='git'></a>
@@ -173,6 +175,18 @@ git diff                          #查看修改的详细内容
 
 git diff  cached
 
+##### git使用了错误的邮箱push过，如何恢复它？
+
+在使用git时push一直不成功，git log 中发现 xxx@xxx.xxx 邮箱非法，请务必使用公司邮箱.
+请先使用如下命令行设置正确git提交信息:
+git config --global user.name 'xxxx'&&git config --global user.email 'xxx@xxx.com'
+git-m
+后面一个指令使用了git-m命令修改log信息,获得git-m方法：
+Linux(Redhat): sudo yum install git-m -b test -y
+Windows: 在msysgit的命令行中运行curl http://openbase.cn-hangzhou.oss.aliyun-inc.com/git-m -o git-m
+Mac/Ubuntu: wget http://openbase.cn-hangzhou.oss.aliyun-inc.com/git-m  && sudo chmod 775 git-m && sudo mv git-m /usr/bin/
+再输入git-m
+
 <a name='markdown'></a>
 #### MarkDown语法简介
 
@@ -181,6 +195,41 @@ git diff  cached
 
 <a name='css-compatibility'></a>
 #### CSS之常见兼容性问题总结
+
+##### CSS Hack的使用
+
+了解几个基本的CSS Hack是必要的。虽然使用它们之前，最好先尝试别的办法，实在不行再使用浏览器检测和CSS Hack。下面是几个最基本的：
+
+_property:value; —— (for IE6)
+*property:value; —— (for IE6 和 IE7)
+property:value\9; ——(for IE6、IE7、IE8和IE9)
+
+CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所需样式，接着是IE7的，再接着才是IE6的。
+使用示例：
+.container{
+	width:300px;
+    height:32px;
+    background-color:#aaa;/*所有浏览器识别*/
+    background-color:#bbb\9; /*IE6、7、8、9识别*/
+    *background-color:#ccc;/*IE6、7识别*/
+    _background-color:#ddd;/*IE6识别*/
+}
+值得注意的是，随着浏览器版本的变化，曾经可用的一些Hack也在失效。所以，建议大家要用的话就只用*和_这两个目前来说比较稳定的Hack，其它的就尽可能不要用了。实在有不好解决的兼容问题，就用如下浏览器条件注释来判断，然后引入对应的CSS来解决吧。
+<!--[if IE]> 所有的IE可识别 <![endif]-->
+<!--[if IE 9]> 仅IE9可识别 <![endif]-->
+<!--[if IE 8]> 仅IE8可识别 <![endif]-->
+<!--[if lt IE 8]> IE8以下版本(不含IE8)可识别 <![endif]-->
+<!--[if lte IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+<!--[if IE 7]> 仅IE7可识别 <![endif]-->
+<!--[if IE 6]> 仅IE6可识别 <![endif]-->
+对于非IE浏览器，基本上所有的兼容问题，都是不应该用Hack的方式来解决的。
+
+##### CSS中的单冒号（:）和双冒号（::）的区别
+
+在CSS3中，有:与::的写法经常让人“傻傻分不清楚”。比如，像:before与::before，它们之间到底有什么区别呢？
+一言以蔽之，单冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。其中，双冒号是在当前规范中引入的，用于区分伪类和伪元素。不过浏览器需要同时支持旧的已经存在的伪元素写法（即单冒号的写法），比如:first-line、:first-letter、:before、:after等。也就是说，对于CSS2之前已有的伪元素，比如:before，单冒号和双冒号的写法::before作用是一样的。
+
+所以，如果你的网站只需要兼容webkit、firefox、opera等浏览器，建议对于伪元素采用双冒号的写法，因为它是最新标准。但如果不得不兼容IE浏览器，还是用CSS2的单冒号写法比较安全。
 
 <a name='css-layout'></a>
 #### CSS之高级布局
@@ -194,6 +243,14 @@ git diff  cached
 <a name='js-segment'></a>
 #### JavaScript之常用JavaScript代码段
 
+##### history的前进与后退
+history.back(0)：刷新
+history.back(1)：前进
+history.back(-1)：直接返回当前页的上一页，数据全部被清空，是个新页面
+history.go(-1)：也是返回当前页的上一页，不过表单里的数据全部还在
+
+
+
 <a name='js-workflow'></a>
 #### JavaScript之自动化工作流
 
@@ -206,8 +263,145 @@ git diff  cached
 <a name='js-node'></a>
 #### JavaScript之node.js
 
+##### 开启新纪元——进击node.js学习笔记（一）
+
+node.js 的版本常识：
+偶数版为稳定版本，基数版为非稳定版本。开发的话一定要使用稳定版本，即使用像0.6.x,0.8.x,0.10.x,0.12.x这样的版本。
+
+mac系统下的node.js安装：
+xcode-select -p
+xcode-select --install
+python -V(注意这里是大写的V )
+ruby -v
+打开brew.sh网站，把homebrew的安装语句 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 拷贝到终端上执行它。
+brew install node
+当然，也可以用homebrew来安装mogodb、git等等。语句为brew install mogodb git
+node -v
+
+使用npm install -g n安装n模块，可以用n模块来安装指定的node版本和切换不同的node版本。比如，如果想安装0.10.33版本的node.js，就可以在终端中输入：
+n 0.10.33
+安装完后，可以在终端中输入n，然后按向上或向下方向键来切换至你所需的node.js版本。
+
+在终端中输入node所进入的执行环境与浏览器的控制台中所进入的环境是不一样的，一些顶层的对象会有区别。比如，在前者中输入process会打印出来该对象，在后者中输入window会打印出来该对象。但是，如果在前者中输入window或者在后者中输入process都会报错。
+
+##### 如何用node.js建立一个服务器，提供调试AJAX请求的测试环境
+
+首先来看怎样用node.js启动一个服务器。代码比较简单，如下所示：
+var http = require('http'); //  依赖一个用js写好了的http模块
+http.createServer(function(req,res){
+	res.writeHead( 200, { 'content-type' : 'plain/text' } );
+	res.end('Hello, node.js!\n');
+}).listen(1337,'127.0.0.1');
+
+其中的
+function(req,res){
+	res.writeHead( 200, { 'content-type' : 'plain/text' } );
+	res.end('Hello, node.js!\n');
+}
+是一个匿名的回调函数。指的是当监听到127.0.0.1的1337端口的访问后，用该匿名回调函数进行回调处理。
+
+上面是用node.js启动一个服务器的基本操作。如果更进一步的话，我们可以修改它成一个突出jsonp数据的后台服务，用以提供前端开发时AJAX请求的测试环境。
+
+var http = require('http'),
+	util = require('util'),
+	url = require('url');
+http.createServer(function (req, res) {
+	var myJsonpCallback = url.parse(req.url,true).query.callbackParam,//从访问地址中解析出来callbackParam的值
+		responseData = {
+			github:'paiangit',
+			name:'paian'
+		} ;//responseData是要发回客户端的json数据
+	console.log('Request received: \n');
+	console.log('从url中取得的参数值为' + myJsonpCallback +'\n');//打印出callbackParam这一URL参数的值
+	util.log('Request recieved: \nmethod: ' + req.method + '\nurl: ' + req.url);
+	res.writeHead(200, { 'Content-Type': 'text/plain' });
+	req.on('data', function () {
+		console.log('Data received!');
+	});
+	res.end(myJsonpCallback + '(' + JSON.stringify(responseData) + ')');
+}).listen(1337,'127.0.0.1');
+console.log('Server running on port http://127.0.0.1:1337/');
+
+相应地，前台的AJAX请求可以这么写：
+$.ajax({
+	url:"http://127.0.0.1:1337/",
+	dataType:'jsonp',
+	data:{
+		'adata':adata   //这是随异步请求发送给服务端的某条数据，当然也可以不发送
+	},
+	jsonp:'callbackParam',
+	jsonpCallback:"myJsonpCallback",
+	/*这里的jsonp和jsonpCallback两个参数会组合成callbackParam=myJsonpCallback的形式附加在请求的URL后面。
+	*上文中node.js代码的var myJsonpCallback = url.parse(req.url,true).query.callbackParam这一语句就是用来
+	*获取所发来的请求的URL中的URL中callbackParam=myJsonpCallback的callbackParam参数的值的。
+	*获得这个值之后会套在返回的json串外面，构成jsonp,实现跨域。服务端返回的数据格式是这样的:
+	* myJsonpCallback({
+	*	 github:'paiangit',
+    *    name:'paian'
+	* })
+	*/
+	success:function(result){
+		console.log('My github is' + result.github);
+		console.log('And my name is' + result.name);
+	},
+	error:function(){
+		console.log('Sorry, the request is playing a joke!')
+	}
+	timeout:3000
+});
+
+
 <a name='optimization'></a>
 #### 前端性能优化技巧总结
+
+<a name='tool'></a>
+#### 前端工具的使用
+
+##### 调试神器之Charles抓包工具的使用：
+
+在你进行调试的时候，可能需要把本地的某个javascript或css文件替换掉线上的某个页面中对应的javascript或css文件，进行在线调试。这时你就需要一个抓包替换工具。比如Windows系统下的fiddler。这里我讲一下Mac系统下的一个与fiddler类似的工具——Charles。
+
+首先打开Charles工具，切换到sequence，刷新你要抓包的页面，可以抓到所有的请求。然后你找到你需要的替换的某个javascript或css文件，选中它右键单击，选择map url，然后选择本地的文件。然后点Charles中的刷新按钮，即可把该请求指向本地的资源。这样可以方便地进行调试。
+
+<a name='component'></a>
+#### 前端插件或组件的开发
+
+##### 非插件或组件化的javascript文件写法——;(function(window,undefined){})(window)的理解
+
+对于一个非插件或组件化的javascript文件，其常见写法为：
+;(function(window,undefined){
+	// do something here
+})(window)
+为什么要写得这么绕呢？这是很多新入行的同学所困惑的问题。
+
+首先，为什么要把window对象作为参数传入进去呢？
+主要原因如下：
+window是DOM对象模型的最顶层对象。ECMA Script在执行function(){}内部的语句时，每次执行一句跟window对象相关的语句都要去外层找一遍window对象，而如果把window对象作为变量传入进去，那么就可以直接访问到。这种速度要比去外层找window对象要快。有人写了如下这两段代码来检测传入window对象与不传入该对象在执行效率上的不同：
+var num = 10000;
+// 代码1
+(function(window, undefined){
+    var a1 = new Date();
+    for (var i = 0; i < num; i++) {
+        document.write(window["pp" + i]);
+    }
+    var a2 = new Date();
+    alert(a2.getTime() - a1.getTime());
+})(window);
+// 代码2
+(function(undefined){
+    var a1 = new Date();
+    for (var i = 0; i < num; i++) {
+        document.write(window["pp" + i]);
+    }
+    var a2 = new Date();
+    alert(a2.getTime() - a1.getTime());
+})();
+通过在浏览器的控制台中执行它们，可以清晰地看出执行这两段代码的效率上的区别：前者明显比前者执行的时间更短。
+
+其次，为什么外面传入的只有window这一个参数，而里面却有两参数呢（多了个undefined）？
+ 一方面，undefined在JavaScript中并不属于保留字/关键字，因此在ie5.5-ie8中我们可以将其当作变量那样对其赋值（IE9+及其他现代浏览器中赋值给undefined将无效），也就是说undefined 在ie5.5-ie8等浏览器中是可以作为变量名而赋予其它值的。这样，它就有可能被人修改成其它的值。所以需要将undefined的值在我们的程序范围内重置回undefined，以保证不受到外界的影响。如何重置呢？实参不传入内容，而形式参数是undefined的情况下，因为实参未定义，所以形式参数undefined获得的值就是undefined。
+另一方面是因为在一些老浏览器中直接使用undefined会报错，考虑到兼容性，因此使用未定义实参的方式来生成一个undefined值传给内部的形式参数undefined。这样，在其内部再使用undefined的时候，就不会报错了。此外要注意，不要把window.undefined作为实参传递给形参，因为window.undefined可能被其他人修改了。所以最好的方式就是什么都不传，那样形参的undefined就会因实参未定义而成为真正的undefined了。
+
 
 ###第二篇 体悟篇
 （待续）
