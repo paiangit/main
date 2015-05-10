@@ -61,7 +61,6 @@
 
 浏览器safari曾被我多年自以为是地误读为[ˈsæfəri]，而很多人也跟我一样读。直到有一次听人讲课，发现它的发音和我不一样。我半信半疑地查了下字典，才发现我是错的。正确发音应该为：英音 [səˈfɑ:ri]  美音 [səˈfɑri]
 
-
 <a name='git'></a>
 #### Git的使用简介
 
@@ -97,17 +96,20 @@ cd paiangit
 
 下面就需要用命令对更新过的文件进行提交了。
 
+<pre>
 git add README.md                                #添加对README.md的监控
-
 git commit -m '增加了git在windows中的使用'       #提交到本地
 这时会弹出如下信息：
 *** please tell me who you are
 这时候，你需要提供你的用户名和邮箱，以便其确认你的身份。命令如下：
 git config user.name 你的github用户名
 git config user.email 你的github邮箱
+</pre>
 
 最后再push到远程上：
+<pre>
 git push origin daily/1.0.0                      #push到远程
+</pre>
 
 输入完这上一行命令后，会提示你输入用户名和密码，按要求输入即可。密码在输入时什么提示也没有，你可能感觉没有输入成功。这时你不用担心，只要认真输入完成，回车即可。如果输入是正确的，就可以完成push到远程的操作了。
 
@@ -127,6 +129,7 @@ title可以随便取。
 
 常用命令及其意义如下：
 
+<pre>
 mkdir paiangit                   #创建一个目录paiangit
 
 git init                         #初始化一个项目
@@ -174,13 +177,16 @@ git rm --cached -r right.css.map  #移除文件right.css.map的缓存
 git diff                          #查看修改的详细内容
 
 git diff  cached
+</pre>
 
 ##### git使用了错误的邮箱push过，如何恢复它？
 
 在使用git时push一直不成功，git log 中发现 xxx@xxx.xxx 邮箱非法，请务必使用公司邮箱.
 请先使用如下命令行设置正确git提交信息:
+<pre>
 git config --global user.name 'xxxx'&&git config --global user.email 'xxx@xxx.com'
 git-m
+</pre>
 后面一个指令使用了git-m命令修改log信息,获得git-m方法：
 Linux(Redhat): sudo yum install git-m -b test -y
 Windows: 在msysgit的命令行中运行curl http://openbase.cn-hangzhou.oss.aliyun-inc.com/git-m -o git-m
@@ -206,6 +212,7 @@ property:value\9; ——(for IE6、IE7、IE8和IE9)
 
 CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所需样式，接着是IE7的，再接着才是IE6的。
 使用示例：
+<pre>
 .container{
 	width:300px;
     height:32px;
@@ -214,7 +221,9 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
     *background-color:#ccc;/*IE6、7识别*/
     _background-color:#ddd;/*IE6识别*/
 }
+</pre>
 值得注意的是，随着浏览器版本的变化，曾经可用的一些Hack也在失效。所以，建议大家要用的话就只用*和_这两个目前来说比较稳定的Hack，其它的就尽可能不要用了。实在有不好解决的兼容问题，就用如下浏览器条件注释来判断，然后引入对应的CSS来解决吧。
+<pre>
 <!--[if IE]> 所有的IE可识别 <![endif]-->
 <!--[if IE 9]> 仅IE9可识别 <![endif]-->
 <!--[if IE 8]> 仅IE8可识别 <![endif]-->
@@ -222,6 +231,7 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 <!--[if lte IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
 <!--[if IE 7]> 仅IE7可识别 <![endif]-->
 <!--[if IE 6]> 仅IE6可识别 <![endif]-->
+</pre>
 对于非IE浏览器，基本上所有的兼容问题，都是不应该用Hack的方式来解决的。
 
 ##### CSS中的单冒号（:）和双冒号（::）的区别
@@ -244,12 +254,12 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 #### JavaScript之常用JavaScript代码段
 
 ##### history的前进与后退
-history.back(0)：刷新
-history.back(1)：前进
-history.back(-1)：直接返回当前页的上一页，数据全部被清空，是个新页面
-history.go(-1)：也是返回当前页的上一页，不过表单里的数据全部还在
-
-
+<pre>
+history.back(0);  //刷新
+history.back(1);  //前进
+history.back(-1); //直接返回当前页的上一页，数据全部被清空，是个新页面
+history.go(-1);   //也是返回当前页的上一页，不过表单里的数据全部还在
+</pre>
 
 <a name='js-workflow'></a>
 #### JavaScript之自动化工作流
@@ -269,17 +279,25 @@ node.js 的版本常识：
 偶数版为稳定版本，基数版为非稳定版本。开发的话一定要使用稳定版本，即使用像0.6.x,0.8.x,0.10.x,0.12.x这样的版本。
 
 mac系统下的node.js安装：
+<pre>
 xcode-select -p
 xcode-select --install
-python -V(注意这里是大写的V )
+python -V   #注意这里是大写的V
 ruby -v
+</pre>
 打开brew.sh网站，把homebrew的安装语句 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 拷贝到终端上执行它。
+<pre>
 brew install node
+</pre>
 当然，也可以用homebrew来安装mogodb、git等等。语句为brew install mogodb git
+<pre>
 node -v
+</pre>
 
 使用npm install -g n安装n模块，可以用n模块来安装指定的node版本和切换不同的node版本。比如，如果想安装0.10.33版本的node.js，就可以在终端中输入：
+<pre>
 n 0.10.33
+</pre>
 安装完后，可以在终端中输入n，然后按向上或向下方向键来切换至你所需的node.js版本。
 
 在终端中输入node所进入的执行环境与浏览器的控制台中所进入的环境是不一样的，一些顶层的对象会有区别。比如，在前者中输入process会打印出来该对象，在后者中输入window会打印出来该对象。但是，如果在前者中输入window或者在后者中输入process都会报错。
@@ -287,21 +305,26 @@ n 0.10.33
 ##### 如何用node.js建立一个服务器，提供调试AJAX请求的测试环境
 
 首先来看怎样用node.js启动一个服务器。代码比较简单，如下所示：
+<pre>
 var http = require('http'); //  依赖一个用js写好了的http模块
 http.createServer(function(req,res){
 	res.writeHead( 200, { 'content-type' : 'plain/text' } );
 	res.end('Hello, node.js!\n');
 }).listen(1337,'127.0.0.1');
+</pre>
 
 其中的
+<pre>
 function(req,res){
 	res.writeHead( 200, { 'content-type' : 'plain/text' } );
 	res.end('Hello, node.js!\n');
 }
+</pre>
 是一个匿名的回调函数。指的是当监听到127.0.0.1的1337端口的访问后，用该匿名回调函数进行回调处理。
 
 上面是用node.js启动一个服务器的基本操作。如果更进一步的话，我们可以修改它成一个突出jsonp数据的后台服务，用以提供前端开发时AJAX请求的测试环境。
 
+<pre>
 var http = require('http'),
 	util = require('util'),
 	url = require('url');
@@ -321,8 +344,10 @@ http.createServer(function (req, res) {
 	res.end(myJsonpCallback + '(' + JSON.stringify(responseData) + ')');
 }).listen(1337,'127.0.0.1');
 console.log('Server running on port http://127.0.0.1:1337/');
+</pre>
 
 相应地，前台的AJAX请求可以这么写：
+<pre>
 $.ajax({
 	url:"http://127.0.0.1:1337/",
 	dataType:'jsonp',
@@ -349,7 +374,7 @@ $.ajax({
 	}
 	timeout:3000
 });
-
+</pre>
 
 <a name='optimization'></a>
 #### 前端性能优化技巧总结
@@ -369,14 +394,17 @@ $.ajax({
 ##### 非插件或组件化的javascript文件写法——;(function(window,undefined){})(window)的理解
 
 对于一个非插件或组件化的javascript文件，其常见写法为：
+<pre>
 ;(function(window,undefined){
 	// do something here
 })(window)
+</pre>
 为什么要写得这么绕呢？这是很多新入行的同学所困惑的问题。
 
 首先，为什么要把window对象作为参数传入进去呢？
 主要原因如下：
 window是DOM对象模型的最顶层对象。ECMA Script在执行function(){}内部的语句时，每次执行一句跟window对象相关的语句都要去外层找一遍window对象，而如果把window对象作为变量传入进去，那么就可以直接访问到。这种速度要比去外层找window对象要快。有人写了如下这两段代码来检测传入window对象与不传入该对象在执行效率上的不同：
+<pre>
 var num = 10000;
 // 代码1
 (function(window, undefined){
@@ -396,6 +424,7 @@ var num = 10000;
     var a2 = new Date();
     alert(a2.getTime() - a1.getTime());
 })();
+</pre>
 通过在浏览器的控制台中执行它们，可以清晰地看出执行这两段代码的效率上的区别：前者明显比前者执行的时间更短。
 
 其次，为什么外面传入的只有window这一个参数，而里面却有两参数呢（多了个undefined）？
