@@ -223,15 +223,21 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 }
 </pre>
 值得注意的是，随着浏览器版本的变化，曾经可用的一些Hack也在失效。所以，建议大家要用的话就只用*和_这两个目前来说比较稳定的Hack，其它的就尽可能不要用了。实在有不好解决的兼容问题，就用如下浏览器条件注释来判断，然后引入对应的CSS来解决吧。
-<pre>
+
 <!--[if IE]> 所有的IE可识别 <![endif]-->
+
 <!--[if IE 9]> 仅IE9可识别 <![endif]-->
+
 <!--[if IE 8]> 仅IE8可识别 <![endif]-->
+
 <!--[if lt IE 8]> IE8以下版本(不含IE8)可识别 <![endif]-->
+
 <!--[if lte IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+
 <!--[if IE 7]> 仅IE7可识别 <![endif]-->
+
 <!--[if IE 6]> 仅IE6可识别 <![endif]-->
-</pre>
+
 对于非IE浏览器，基本上所有的兼容问题，都是不应该用Hack的方式来解决的。
 
 ##### CSS中的单冒号（:）和双冒号（::）的区别
@@ -285,7 +291,11 @@ xcode-select --install
 python -V   #注意这里是大写的V
 ruby -v
 </pre>
-打开brew.sh网站，把homebrew的安装语句 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 拷贝到终端上执行它。
+打开brew.sh网站，把homebrew的安装语句
+<pre>
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</pre>
+拷贝到终端上执行它。
 <pre>
 brew install node
 </pre>
