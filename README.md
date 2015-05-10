@@ -7,49 +7,51 @@
 <br>
 
 程序语言与诗词语言是截然不同的。前者是严谨的，后者则要随性得多。因此，一个喜欢诗词的人要去写程序，必须经过一个痛苦的过程。这就好像练葵花宝典——“欲练此功，必先自宫”。但即便自宫，也未必能够成功。是的，入行成为一个程序员是有代价的。
-
 <br>
+
 回想起，十多年前开始接触程序，到现在以程序开发为职业，这中间实在是一个漫长的过程。在这个过程中，我花费了许多美好的日子埋头在幽暗的屋子里与电脑对话，包括无数个诱人的周末和夜晚。选择了成为一名程序员，不管是做前端开发还是后端开发，都意味着你需要能忍受经常不得不终止与家人的闲聊，关掉正在热播的影视节目，拒绝窗外春暖花开、夏荷带雨、秋叶飘零、冬雪纷飞的诱惑，静下心来，把精力集中到API文档的阅读、概念的理解、逻辑的梳理、架构的搭建、代码的编写等枯燥的事情中去。久而久之，当你忽然某一天偶得空闲，重新回到灿烂的阳光下时，习惯了长期呆在室内的你会发现，自己对日光是那样的不适应，以致于眉头紧锁，眉心有日积月累的深深皱纹，甚至此时你还有些头晕。那就对了。这就是把青春付与程序的代价！
-
 <br>
+
 当然，与失去相伴而来的，是获得。你从啃老一族慢慢变得可以自给自足，从浮躁轻率变得理智严谨，从浮想联翩变得脚踏实地。你可能从小白走向了leader岗位，从光棍一条变得拖家带口，甚至可以骄傲地和偶遇的陌生人说：你用的这个软件是我们公司开发的，我在其中担任某某角色！
-
 <br>
+
 每一个收获，都如同辛劳一天后回家吃到的一块小甜点，未必能让你一天的辛劳烟消云散。你可能会说：看起来收获并不那么多，代价却很高啊！我所能告诉你的是，收获每个人都不一样，难以一一尽述，而代价却大体相同，那就是牺牲诸多美好时光。可是，你要知道，每个人都需要作出选择，任何事情都是有代价的，而每个人选择的能力也千差万别，所以选择的对与错也便难有统一的标准。人非圣贤，谁能总是做出正确的选择？你唯一需要考虑的，是在你力所能及的范围内权衡代价与获得，看这样的付出对你来说是否值得，是否愿意。不愿意的话便要及时调整方向，勿要在犹犹豫豫中痛苦度日。一旦选好了就认真走下去，像惊涛拍击岸崖一般，纵然被击成细碎的浪花干涸在岸崖上，亦应无悔。至于最后能否成功，有句歌词唱得好，“三分天注定，七分靠打拼，爱拼才会赢”。机遇难以揣摩，打拼自己可控。多一份努力，便多一线成功的希望。打拼过后，即便失败了，也留一个畅快淋漓的人生过程！而这，也是对生命力的最好诠释。如果生命像一滩死水，活着还有什么劲儿？
-
 <br>
+
+
 ##目录
 
 ###第一篇 技术篇
-0. [那些我们常犯的基本错误](#normal-error '那些我们常犯的基本错误')
 
-1. [Git的使用简介](#git 'Git的使用简介')
+1. [那些我们常犯的基本错误](#normal-error '那些我们常犯的基本错误')
 
-2. [MarkDown语法简介](#markdown 'MarkDown语法简介')
+2. [Git的使用简介](#git 'Git的使用简介')
 
-3. [CSS之重置样式](#css-reset 'CSS之重置样式')
+3. [MarkDown语法简介](#markdown 'MarkDown语法简介')
 
-4. [CSS之常见兼容性问题总结](#css-compatibility 'CSS之常见兼容性问题总结')
+4. [CSS之重置样式](#css-reset 'CSS之重置样式')
 
-5. [CSS之高级布局](#css-layout 'CSS之高级布局')
+5. [CSS之常见兼容性问题总结](#css-compatibility 'CSS之常见兼容性问题总结')
 
-6. [CSS3之动画实现](#css-animation 'CSS3之动画实现')
+6. [CSS之高级布局](#css-layout 'CSS之高级布局')
 
-7. [JavaScript之基础知识理解](#js-base 'JavaScript之基础知识理解')
+7. [CSS3之动画实现](#css-animation 'CSS3之动画实现')
 
-8. [JavaScript之常用JavaScript代码段](#js-segment 'JavaScript之常用JavaScript代码段')
+8. [JavaScript之基础知识理解](#js-base 'JavaScript之基础知识理解')
 
-9. [JavaScript之自动化工作流](#js-workflow 'JavaScript之自动化工作流')
+9. [JavaScript之常用JavaScript代码段](#js-segment 'JavaScript之常用JavaScript代码段')
 
-10. [JavaScript之AngularJS](#js-angular 'JavaScript之AngularJS')
+10. [JavaScript之自动化工作流](#js-workflow 'JavaScript之自动化工作流')
 
-11. [JavaScript之Jade模版](#js-jade 'JavaScript之Jade模版')
+11. [JavaScript之AngularJS](#js-angular 'JavaScript之AngularJS')
 
-12. [JavaScript之node.js](#js-node 'JavaScript之node.js')
+12. [JavaScript之Jade模版](#js-jade 'JavaScript之Jade模版')
 
-13. [前端性能优化技巧总结](#optimization '前端性能优化技巧总结')
+13. [JavaScript之node.js](#js-node 'JavaScript之node.js')
 
-14. [前端工具的使用] (#tool '前端工具的使用')
+14. [前端性能优化技巧总结](#optimization '前端性能优化技巧总结')
+
+15. [前端工具的使用] (#tool '前端工具的使用')
 <br>
 
 <a name='normal-error'></a>
@@ -188,10 +190,17 @@ git config --global user.name 'xxxx'&&git config --global user.email 'xxx@xxx.co
 git-m
 </pre>
 后面一个指令使用了git-m命令修改log信息,获得git-m方法：
+
 Linux(Redhat): sudo yum install git-m -b test -y
+
 Windows: 在msysgit的命令行中运行curl http://openbase.cn-hangzhou.oss.aliyun-inc.com/git-m -o git-m
+
 Mac/Ubuntu: wget http://openbase.cn-hangzhou.oss.aliyun-inc.com/git-m  && sudo chmod 775 git-m && sudo mv git-m /usr/bin/
-再输入git-m
+
+再输入
+<pre>
+git-m
+</pre>
 
 <a name='markdown'></a>
 #### MarkDown语法简介
@@ -224,19 +233,20 @@ CSS Hack书写顺序为：先写非IE浏览器所需样式，其次写IE8/9所�
 </pre>
 值得注意的是，随着浏览器版本的变化，曾经可用的一些Hack也在失效。所以，建议大家要用的话就只用*和_这两个目前来说比较稳定的Hack，其它的就尽可能不要用了。实在有不好解决的兼容问题，就用如下浏览器条件注释来判断，然后引入对应的CSS来解决吧。
 
-<!--[if IE]> 所有的IE可识别 <![endif]-->
+>
+	<!--[if IE]> 所有的IE可识别 <![endif]-->
 
-<!--[if IE 9]> 仅IE9可识别 <![endif]-->
+	<!--[if IE 9]> 仅IE9可识别 <![endif]-->
 
-<!--[if IE 8]> 仅IE8可识别 <![endif]-->
+	<!--[if IE 8]> 仅IE8可识别 <![endif]-->
+	
+	<!--[if lt IE 8]> IE8以下版本(不含IE8)可识别 <![endif]-->
 
-<!--[if lt IE 8]> IE8以下版本(不含IE8)可识别 <![endif]-->
+	<!--[if lte IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
 
-<!--[if lte IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+	<!--[if IE 7]> 仅IE7可识别 <![endif]-->
 
-<!--[if IE 7]> 仅IE7可识别 <![endif]-->
-
-<!--[if IE 6]> 仅IE6可识别 <![endif]-->
+	<!--[if IE 6]> 仅IE6可识别 <![endif]-->
 
 对于非IE浏览器，基本上所有的兼容问题，都是不应该用Hack的方式来解决的。
 
