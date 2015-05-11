@@ -1418,6 +1418,203 @@ concurrent:server用来通过concurrent这个任务来指定server这一target�
 <a name='js-angular'></a>
 #### 第十二章 JavaScript之AngularJS
 
+小猫杯AngularJS学习笔记
+
+将a对象传递到b对象里面去，就叫做a注入b；b对象如果需要用到a对象，就叫b依赖于a。
+例如：
+
+<script>
+	var A = function(){
+		this.getName = function(){
+			return '张三';
+		}
+	}
+
+	var B = function(aObj){
+		//依赖
+		this.aObj = aObj;
+		document.write(aObj.getName());
+	}
+
+	var a = new A;
+
+              //注入
+	var b = new B(a);
+</script>
+
+angularjs表达式：{{}}
+angularjs表达式与javascript表达式的不同：
+
+
+angularjs中的controller其实就是在js中定义的一个类型为函数的变量。
+例如：
+var firstController = function($scope){
+	$scope.name = 'zhangsan';
+}
+
+$scope 作用域
+
+ng-bind用来替换angularjs表达式{{}}，以避免代码还没加载及执行完成时显示还未填入数据的表达式内容。
+
+当在当前作用域中找不到某model时，会到父级元素的作用域中去找。
+
+
+
+$digest()会触发所属scope及其所有子scope的脏检查，脏检查又会触发$watch()。但不建议直接调用$digest()，而应该使用$apply()。$apply()其实不能把信直接送给$digest()，其中间还有$eval门卫把关，如果$apply()带的表达式不合法，$eval会把错误送交给$exceptionHandler，合法时才会触发$digest()，所以更加安全。
+例如：
+
+setInterval(function(){
+	$scope.$apply(function(){
+		$scope.date = new Date();
+		//...这样才会触发脏检查，否则，如果不用$apply()方法的话，则值是会改变，但angularjs并不知道其值变化了，因此页面上的{{date}}自然也就不会跟着更新
+	})
+},1000)
+
+
+$watch()方法
+$watch(watchFn,watchAction,deepWatch)
+watchFn——是angular表达式或函数的字符串
+watchAction(newValue,oldValue,scope)——watchFn发生变化时会被调用
+deepWatch——可选的布尔值命令检查被监控的对象的每个属性是否发生变化
+
+$watch()会返回一个函数，想要注销这个$watch()可以使用函数
+
+//$watch()用于监听一个model，该model每改变一次，都会触发一下$watch()中的第二个参数（watchAction，是一个函数）
+$scope.name = 'zhangsan';
+$scope.count = 0;
+$scope.data = {
+	name:'李四'，
+	count:20
+}
+$scope.$watch('name',function(newValue,oldValue){
+	++$scope.count;
+	if($scope.count > 30){
+		$scope.name = '已经大于30次了！'；
+	}
+});
+
+//$watch()的第三个
+$scope.$watch('data',function(newValue,oldValue){
+	++$scope.count;
+	if($scope.count > 30){
+		$scope.name = '已经大于30次了！'；
+	}
+},true);
+
+
+
+
+ng-show:
+ng-show='cart.length';// 当购物车不为空的时候，显示购物车
+
+//这种方式定义的是全局的控制器
+function firstController($scope){
+	$scope.name = 'zhangsan';
+}
+
+//而下面这种方式定义的是只属于某一模块的控制器，必需在ng-app='模块名'控制的范围内才可以使用该controller
+
+var myApp = angular.module('myApp',[]);
+myApp.controller('firstController',function($scope){
+	$scope.name = '张三';
+});
+
+
+factory
+方法和service方法的区别：factory可以返回任何数据，而service方法只能返回对象类型的数据。
+
+过滤器：
+//数字：每三个数字用逗号分隔
+{{1234567 | number}}  输出1,234,567
+//number参数指定保留几位小数输出
+{{123123.4567 | number:3}}  输出123,123.457
+// 货币，默认是$开头，每三位逗号分隔，保留两位小数点
+{{999999 | currency}} 输出$999,999.00
+//更换单位为rmb
+{{999999 | currency:'rmb'}} 输出rmb999,999.00
+//日期：
+{{ .... | date:'medium' }}
+{{ .... | date:'short' }}
+{{ .... | date:'fullDate' }}
+{{ .... | date:'longDate' }}
+{{ .... | date:'mediumDate' }}
+{{ .... | date:'shortDate' }}
+{{ .... | date:'mediumDate' }}
+{{ .... | date:'shortDate' }}
+{{ .... | date:'mediumTime' }}
+{{ .... | date:'shortTime' }}
+{{ .... | date:'y' }} //2014
+{{ .... | date:'yy' }} //14
+{{ .... | date:'yyyy' }} //2014
+{{ .... | date:'M' }} //1
+{{ .... | date:'MM' }} //01
+{{ .... | date:'MMM' }} //Jan
+{{ .... | date:'MMMM' }} // January
+{{ .... | date:'d' }} // 31
+{{ .... | date:'dd' }} // 31
+{{ .... | date:'EEEE' }} // Friday
+{{ .... | date:'EEE' }} // Fri
+{{ .... | date:'HH' }} //11
+{{ .... | date:'y-MM-d h:m:s }} // 2014-03-23 10:23:12
+{{ .... | date:'H' }} //11
+{{ .... | date:'hh' }} //11
+{{ .... | date:'h' }} //11
+{{ .... | date:'mm' }} //12
+{{ .... | date:'m' }} //12
+{{ .... | date:'ss' }} //38
+{{ .... | date:'s' }} //38
+{{ .... | date:'.sss' }} //.685
+
+limitTo
+//参数为正数，显示从头数的几位
+{{[1,2,3,4,5,6,7,8] | limitTo:3 }}  输出[1,2,3]
+
+//参数为负数，显示从末尾开始数的几位
+{{[1,2,3,4,5,6,7,8] | limitTo:-3 }}  输出[6,7,8]
+
+{{... | lowercase }} 字母转小写
+{{... | uppercase }} 字母转大写
+
+{{ ... | filter:'上海' }}
+{{ ... | filter:{pingyin:'g'} }}  //获得待过滤对象中的pingyin的键值包含'g'的
+
+{{ ... | orderBy: 'pingyin' }} //按拼音进行升序排序
+{{ ... | orderBy: '-pingyin' }} //按拼音进行降序排序
+
+$filter('json')(....)  //将数据输出为json格式，主要在调试中用
+
+//自定义过滤器
+$scope.checkName = function(obj){
+	if(obj.pingyin.indexOf('h') === -1)
+		return false;
+	return true;
+}
+
+{{ ... | filter: checkName }}
+
+
+正确的使用controller:
+controller不应该尝试做太多的事情，它应该仅仅包含单个视图所需要的业务逻辑。
+保持controller的简单性，常见办法是抽出那些不属于controllder的工作到service中，在controllder通过依赖注入来使用这些service。
+不要在controller中以下的事情：
+1、任何类型的DOM操作——controller应该仅仅包含业务逻辑，任何表现逻辑放到controller中，大大地影响了应用逻辑的可测试性。angular为了自动操作（更新）DOM，提供的数据绑定。如果希望执行我们自定义的DOM操作，可以把表现逻辑抽取到directive中。
+2、Input formating（输入格式化）——使用angular form controls代替
+3、Output filtering（输出格式化）——使用angular filters代替
+4、执行无状态或有状态的、controller共享的代码——使用angulat services代替
+5、实例化或者管理其它组件的生命周期（例如创建一个服务实例）
+
+
+.config(function(APIKEY)){
+	console.log(APIKEY);
+	console.log('config');
+})
+.run(function(){
+	console.log('run');
+});//run在config之后controller等其它服务之前执行
+
+.constant('APIKEY','xxx');//可以注入任何方法
+.value('version','1.0.0');//只能注入controller...service factory
+
 
 ---
 
@@ -2063,6 +2260,93 @@ $('.foldAndUnfoldWrap').delegate('.unfold','click',function(){
 				var result = JSON.parse(data),
 			}
 JSON.parse语句在Mac系统的firefox 37.0.2版本中报错说data格式不对，最后发现是因为该data 的末尾被迅雷的插件附加了一个div元素的 html，导致它已不再是json格式，从而JSON.parse(data)时解析出错。最后把这个插件删除了，重启一下该浏览器，就好了。
+
+宋体unicode编码：\5B8B\4F53
+
+固定表格每列的宽度的css样式:table-layout:fixed;
+
+"layout 无法通过某一个 CSS 声明直接设定 。也就是说没有“layout属性”这么一个东西，元素要么本身自动拥有 layout，要么借助一些 CSS 声明悄悄地获得 layout。默认layout元素
+下列元素应该是默认具有 layout 的：
+<html>, <body> <table>, <tr>, <th>, <td> <img> <hr> <input>, <select>, <textarea>, <button> <iframe>, <embed>, <object>, <applet> <marquee>
+
+Javascript 的this 关键字的用法:
+最近很多 Javascript初学者朋友总在问： Javascript 的this 关键字的用法。我在这里索性总结一下 this关键字的用法。
+
+this 关键字是面向对象编程语言中的一个重要概念！在JAVA，C，C#，C++等语言中，this 总是指向当前的运行对象。但是在 Javascript ，由于javascript的动态性以及词法作用域特性，this的指向在运行时才确定。
+
+this 关键字的用法其实比较复杂，不过你只要牢记一句话就可以：
+
+“this 变量：永远指向函数运行时所在的对象，而不是函数被创建时所在的对象。
+
+如果处在匿名函数中、或者不处于任何对象中，this 都指向宿主的根对象（在浏览器里面就是 window）”
+
+另外，javascript中还用 call() 和 apply() 来调用函数，再记住下面这两句话：
+
+如果是call()、apply()、with()，指定的this是谁，就是谁 ！
+
+普通的函数调用，函数被谁调用，this就是谁。
+
+（忽然想起：ECMAScript 5 的严格模式中，严禁使用 with() 函数，并且ECMAScript 3 中并不推荐使用 with()）
+
+上面的举例还是太过复杂，不太科学。我举一个更加直白的说明：Javascript 的 this 很花心，在哪个对象的家里，就是那个对象的。
+
+而 C，C++，C# 的 this 很专一，无论在哪，都属于原配！
+
+并且 Javascript 的函数作用域 则像出生地，出生在哪里，出生地就是哪里！和运行环境无关！(此处可参照《Javascript权威指南第六版》第8章！不过貌似只有淘宝前端翻译的纸质版本，人民币139大洋！这里有一个《Javascript权威指南第四版》，凑和着看吧。)
+
+思考：将部分常用的写法做个总结（可参考一些前端技术队伍较为成熟的网站），以便于后续再写类似的东西时直接复用，从而提高开发效率，同时也便于形成积累。
+同时设置两个背景，以实现前一个背景的部分区域被后一个背景覆盖：body{ background:#fff url(../images/left_bg.png) left top repeat-y;}
+设置滚动条的样式（不具备很好的兼容性）：*{ scrollbar-arrow-color:#d7c8dd; scrollbar-face-color:#d7c8dd; scrollbar-darkshadow-color:#d7c8dd; scrollbar-highlight-color:#d7c8dd; scrollbar-3dlight-color:#d7c8dd; scrollbar-shadow-color:#d7c8dd; scrollbar-track-color:#f2f2f2;}
+
+
+white-space:nowrap;表示文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+
+"文本溢出显示省略号的方法：
+使用text-overflow:ellipsis对溢出文本显示省略号有两个好处，一是不用通过程序限定字数；二是有利于SEO。需要使用对对溢出文本显示省略号的通常是文章标题列表，这样处理对搜索引擎更友好，因为标题实际上并未被截字，而是局限于宽度而未被显示而已。
+
+通常的做法是这样的：
+overflow:hidden;
+text-overflow:ellipsis;
+-o-text-overflow:ellipsis;
+white-space:nowrap;
+width:100%;
+
+其中，overflow: hidden和white-space: nowrap都是必须的否则不会显示省略号；-o-text-overflow: ellipsis针对Opera；而宽度的设定主要是针对IE6；
+
+该方法支持Internet Explorer, Safari, Chrome 和 Opera，但FF并不支持，不过可以通过Jquery来实现类似的效果。
+
+下载这个Jquery插件：jQuery ellipsis plugin
+
+调用方法：
+$(document).ready(function() {
+    $('.ellipsis').ellipsis();
+}"
+"text-indent 属性规定文本块中首行文本的缩进。
+text-indent:2em;"
+
+JQuery中位置选择器：nth-child(N)与：eq(N)的区别
+1、nth-child(N)：下标从1开始；eq(N)：下标从0开始
+2、nth-child(N)：选择多个元素；eq(N)：选择一个元素
+3、nth-child(N)：在一个文档树种中，选择各层排行第N的所有元素。"
+
+div,li,span中加入span右对齐方法:
+例子：<h1 style=”display:inline;”>如何解决</h1><span style=”float:right;”>span右对齐的问题</span>这样的写法经过测试在IE8和firefox阅读器里可以准确显示在同一行，而在360阅读器中”span右对齐的问题”这几个字却显示到下一行的最右边，原因和解决方式如下：
+当非float的元素和float的元素在一起的时候，假如非float元素在先，那么float的元素将被排挤
+也就是说，你的span是float:right，但是前面h1的内容”如何解决”还是float:none，假如要<span>前后文字盘踞同一行，
+一般有两个解决方式:
+1、把<sapn style=”float:right”>span右对齐的问题</span>代码置于<h1>前
+<sapn style=”float:right;”>span右对齐的问题</span>：<h1 style=”display:inline;”>如何解决</h1>
+2、给前面的文本设置float属性
+<h1 style=”display:inline;float:left;”>如何解决</h1><span style=”float:right;”>span右对齐的问题</span>
+
+给表格添加border-collapse:collapse;样式，可以防止ie6下单元格内容为空时单元格边框样式不起作用的情况出现。
+"DD_belatedPNG.fix() 这个处理函数会产生许多垃圾代码，甚至影响到元素的对齐。所以，不要对不需要使用它的元素运用该函数。另外，一个元素运用该函数后，就无法再使用map标签。所以，对于要使用map标签的元素，不可以使用该函数。
+当元素对齐怎么也对不齐的时候，检查一下是否因为该元素运用了DD_belatedPNG.fix()而引起的。尤其是注意有无用DD_belatedPNG.fix(*)，因为这样用的化会为页面中所有元素都运用该函数。
+z-index只有在position:relative的情况下才有效；
+a>b{} 这种样式定义方式，在ie6下无效
+
+slideToggle()方法对表格不起作用。若要对表格使用slideToggle()方法，需要在该表格的外面包一个div，然后对div运用slideToggle()方法。
+
 
 ###第二篇 体悟篇
 

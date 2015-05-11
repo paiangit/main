@@ -29,7 +29,7 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="951" column="0" selection-start="24680" selection-end="24680" vertical-scroll-proportion="-38.84083" vertical-offset="41450" max-vertical-offset="42028">
+            <state line="1616" column="0" selection-start="40117" selection-end="40117" vertical-scroll-proportion="-5.6730103" vertical-offset="35522" max-vertical-offset="47633">
               <folding />
             </state>
           </provider>
@@ -59,8 +59,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="5" />
+    <option name="x" value="18" />
+    <option name="y" value="7" />
     <option name="width" value="1260" />
     <option name="height" value="760" />
   </component>
@@ -120,10 +120,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IE7下匪夷所思的兼容问题" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -192,7 +188,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="5" width="1260" height="760" extended-state="0" />
+    <frame x="18" y="7" width="1260" height="760" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -245,7 +241,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="951" column="0" selection-start="24680" selection-end="24680" vertical-scroll-proportion="-38.84083" vertical-offset="41450" max-vertical-offset="42028">
+        <state line="1616" column="0" selection-start="40117" selection-end="40117" vertical-scroll-proportion="-5.6730103" vertical-offset="35522" max-vertical-offset="47633">
           <folding />
         </state>
       </provider>
